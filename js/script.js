@@ -54,6 +54,12 @@ function minimizeTaskListener(task) {
     task.querySelector('.list-minimize').addEventListener('click', function(){
         task.classList.toggle('minimized');
         task.querySelector('.list-task-description').classList.toggle('hidden');
+        
+        if(task.querySelector('.list-minimize').style.transform == 'rotate(180deg)') {
+            task.querySelector('.list-minimize').style.transform = 'rotate(0deg)';
+        } else {
+            task.querySelector('.list-minimize').style.transform = 'rotate(180deg)';
+        }
     });
 }
 
