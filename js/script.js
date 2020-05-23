@@ -10,10 +10,14 @@ submitButton[0].addEventListener("click", function(event){
     event.preventDefault();
     if((taskName.value != '') && (taskDescription.value != '')){
         addTask(taskName.value, taskDescription.value);
-        taskName.value = '';
-        taskDescription.value = '';
+        cleanForm();
     }
 });
+
+function cleanForm() {
+    taskName.value = '';
+    taskDescription.value = '';
+};
 
 function addTask(name, description){
     listTasks[0].insertAdjacentHTML('afterEnd', 
@@ -43,7 +47,7 @@ function removeTaskListener(task) {
     task.querySelector('.list-close').addEventListener('click', function(){
         task.remove();
         statusChecker();
-    });
+    }, {once: true});
 }
 
 function minimizeTaskListener(task) {
